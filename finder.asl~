@@ -1,7 +1,7 @@
 // Agent Finder in project Intelligent_lib.mas2j
 
 /* Initial beliefs and rules */
-sincere(Master)
+sincere(Master).
 /* Initial goals */
 
 /* Plans */
@@ -13,6 +13,6 @@ print(X, “Got It”)
 else{
 	print(X, “We dont have this shit”) 
 	.send(Master,tell,not found(B))
-}
+}.
 
 

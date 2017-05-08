@@ -15,4 +15,3 @@
 @h2
 -has(owner,beer) : true
 <- !get(book).
-

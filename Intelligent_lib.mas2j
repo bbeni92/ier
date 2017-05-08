@@ -9,7 +9,7 @@ MAS intelligent_lib {
 
         //librarian;
 
-        //finder;
+        finder;
 
         client;
 
