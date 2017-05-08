@@ -5,5 +5,13 @@ MAS intelligent_lib {
     infrastructure: Centralised
 
     agents:
+        master;
+
+        librarian;
+
+        finder;
+
+        client;
+
 }
 
