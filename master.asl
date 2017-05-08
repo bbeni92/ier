@@ -6,10 +6,6 @@
 
 /* Plans */
 @h1
-+!has(client,book): delivered(client, book)
-<- .send(client, tell, has(client, book));
--delivered(client, book).
-@h2
 +!has(client,book): not available(book,library)
 <- .send(finder,achieve,find(client,book)).
 
