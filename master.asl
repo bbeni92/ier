@@ -6,16 +6,17 @@
 
 /* Plans */
 @h1
-+!has(client,book): available(book,library) & not delivered(client, book)
-<- send(librarian,achieve,deliver(client, book));
-!feedback(client).
-
++!has(client,book): delivered(client, book)
+<- .send(client, tell, has(client, book));
+-delivered(client, book).
 @h2
 +!has(client,book): not available(book,library)
-<- .send(finder,achieve,found(client,book));
-!wait(finder,book). // wait until the finder had results
+<- .send(finder,achieve,find(client,book)).
 
 @f1
-+!found(client,book)[source(finder)]: true <- +available(book,library);
-!has(client,book);
-.print("The finder found the ordered book!").
++!deliver(client,book)[source(finder)]: not available(book,library)<- 
+.print("The book was found!");
++available(book,library);
+.send(librarian, achieve, deliver(client, book)).
+
++delivered(client,book)[source(librarian)]<-.print("finished!").

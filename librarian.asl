@@ -5,4 +5,8 @@
 /* Initial goals */
 
 /* Plans */
++!deliver(client,book)[source(master)]:true <-
+.print("I delivered the book!");
+.send(client,tell,has(client, book));
+.send(master,tell,delivered(client,book)).
 

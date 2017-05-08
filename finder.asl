@@ -5,6 +5,8 @@
 /* Initial goals */
 
 /* Plans */
-@h1
-+!found(client,book)[source(master)]:true <-
-.send(master,achieve,found(client,book)).
+@f1
++!find(client,book)[source(master)]:true <-
+.send(master,achieve,deliver(client,book));
+.print("I found the book!").
+

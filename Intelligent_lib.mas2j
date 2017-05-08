@@ -7,7 +7,7 @@ MAS intelligent_lib {
     agents:
         master;
 
-        //librarian;
+        librarian;
 
         finder;
 
