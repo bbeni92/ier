@@ -11,7 +11,7 @@ MAS intelligent_lib {
 
         finder;
 
-        client;
+        client agentArchClass ClientGUI;
 
 }
 

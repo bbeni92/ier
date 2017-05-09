@@ -6,13 +6,13 @@
 
 /* Plans */
 @h1
-+!has(client,book): not available(book,library)
-<- .send(finder,achieve,find(client,book)).
++!has(client,B): not available(B,library)
+<- .send(finder,achieve,find(client,B)).
 
 @f1
-+!deliver(client,book)[source(finder)]: not available(book,library)<- 
++!deliver(client,B)[source(finder)]: not available(B,library)<- 
 .print("The book was found!");
-+available(book,library);
-.send(librarian, achieve, deliver(client, book)).
++available(B,library);
+.send(librarian, achieve, deliver(client, B)).
 
-+delivered(client,book)[source(librarian)]<-.print("finished!").
++delivered(client,B)[source(librarian)]<-.print("finished!").

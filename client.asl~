@@ -7,12 +7,13 @@
 /* Plans */
 @g
 +!get(book) : true
-<- .send(master, achieve, has(client,book)).
+<- .send(master, achieve, has(client,book));
+.print("Ordered!").
 @h1
-+has(client,book) : true
-<- .send(master, tell,satisfied(client));
-	.print("Client: I get the book").
++has(client,book) : true <- 
+.send(master, tell,satisfied(client));
+.print("I get the book");
+-get(book).
 @h2
--has(owner,beer) : true
+-has(client,book) : true
 <- !get(book).
-
