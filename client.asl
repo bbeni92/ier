@@ -1,19 +1,20 @@
 // Agent Client in project Intelligent_lib.mas2j
+
 /* Initial beliefs and rules */
 
 /* Initial goals */
-!get(X).
+!get(book("Kiskutya és a farka")).
 
 /* Plans */
 @g
-+!get(X) : true
-<- .send(master, achieve, has(client,X));
++!get(book(X)) : true
+<- .send(master, achieve, has(client,book(X)));
 .print("Ordered!").
 @h1
-+has(client,X) : true <- 
++has(client,book(X)) : true <- 
 .send(master, tell,satisfied(client));
-.print("I get the book");
--get(X).
+.print("I get the book named ", X,"!");
+-get(book(X)).
 @h2
--has(client,X) : true
-<- !get(X).
+-has(client,book(X)) : true
+<- !get(book(X)).
