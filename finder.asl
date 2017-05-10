@@ -6,9 +6,6 @@
 
 /* Plans */
 @f1
-+!find(client,book(X))[source(master)]:true <-
-if(true)
-{
-.send(master,achieve,deliver(client,book(X)));
-.print("I found the book named ",X,"!");
-}.
++!find(client,I)[source(master)]:true <-
+.send(master,achieve,deliver(client,I));
+.print("I found the book named ",I,"!").

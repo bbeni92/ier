@@ -33,21 +33,6 @@ public class ClientGUI extends AgArch {
         f.pack();
         f.setVisible(true);
     }
-
-    @Override
-    public void act(ActionExec action) { //, List<ActionExec> feedback) {
-        if (action.getActionTerm().getFunctor().startsWith("show_winner")) {
-            jt.append("Winner of auction  " + action.getActionTerm().getTerm(0));
-            jt.append(" is " + action.getActionTerm().getTerm(1) + "\n");
-            action.setResult(true);
-            actionExecuted(action);
-            
-            search.setEnabled(true); // enable GUI button
-        } else {
-            super.act(action); // send the action to the environment to be performed.
-        }
-    }
-
     @Override
     public void stop() {
         f.dispose();

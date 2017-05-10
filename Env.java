@@ -22,28 +22,25 @@ public class Env extends Environment {
     @Override
     public boolean executeAction(String agName, Structure action) {
         System.out.println("["+agName+"] doing: "+action);
-        boolean value = false;
         
         if(agName.equals("master") && action.getFunctor().equals("is_in_db")){ 
         	
         	String item = action.getTerm(0).toString();
-        	System.out.println(item);
         	
         	boolean available = false;
         	//adatbázis összehasonlítás 
         	// .......
         	
         	if(available){
-        		addPercept("master",ASSyntax.createLiteral("exists",ASSyntax.createString(item)));
+        		addPercept("master",Literal.parseLiteral("exist("+item+")"));
         	}
         	else{
-        		addPercept("master",ASSyntax.createLiteral("~exists",ASSyntax.createString(item)));
+        		addPercept("master",Literal.parseLiteral("~exist("+item+")"));
         	}
-        	value = available;
         }
         informAgsEnvironmentChanged();
         
-        return value; // the action was executed with success 
+        return true; // the action was executed with success 
     }
 
     /** Called before the end of MAS execution */

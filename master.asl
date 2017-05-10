@@ -7,21 +7,27 @@
 /* Plans */
 //Item kiszolgálása
 //első kör -- a master megtalálja e az adatbázisban és szabad?
+@e1
++exist(I): true <- 
+.print("Yes, the [",I,"] can be borrowed!");
+.send(finder,achieve,find(client,I));
+-exist(I).
+@e2
++~exist(I): true <- 
+.print("No, the [",I,"] can not be borrowed!");
+.send(client,tell,~has(client,I));
+-~exist(I).
+
 @m1
-+!has(C,I): exist(I)<-.send(finder,achieve,find(C,I)).
-@m2
-+!has(C,I): ~exist(I)<-.send(C,tell,~has(C,I)).
-@m3
-+!has(C,I): not exist(I)<-is_in_db(I);
-!has(C,I).
++!has(C,I): not exist(I)<- is_in_db(I).
 
 //második kör -- a finder megtalálja e könyvtárban fizikailag?
 @f1
-+!deliver(C,I)[source(finder)]: true <- 
++!deliver(client,I)[source(finder)]: true <- 
 .print("The book named ",I," was found!");
-.send(librarian, achieve, deliver(C,I)).
+.send(librarian, achieve, deliver(client,I)).
 
-//harmadik kör -- a librarian kiszállította az Itemet
+//harmadik kör -- finish
 
-+defalivered(C,I)[source(librarian)]<-.print("Request accompished!").
++delivered(client,I)[source(librarian)]<-.print("Request accompished!").
 
