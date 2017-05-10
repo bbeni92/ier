@@ -3,18 +3,17 @@
 /* Initial beliefs and rules */
 
 /* Initial goals */
-!get(book("Kiskutya és a farka")).
 
 /* Plans */
 @g
-+!get(book(X)) : true
-<- .send(master, achieve, has(client,book(X)));
++!get(I) : true
+<- .send(master, achieve, has(self,I));
 .print("Ordered!").
 @h1
-+has(client,book(X)) : true <- 
-.send(master, tell,satisfied(client));
-.print("I get the book named ", X,"!");
--get(book(X)).
++has(self,I) : true <- 
+.send(master, tell,satisfied(self));
+.print("I get the book named ", I,"!");
+-get(I).
 @h2
--has(client,book(X)) : true
-<- !get(book(X)).
+-has(self,I) : true
+<- !get(I).

@@ -14,19 +14,15 @@ public class ClientGUI extends AgArch {
 
     JTextArea jt;
     JFrame    f;
-    JButton search;
-
-    int searchId = 0;       
+    JButton search;    
 
     public ClientGUI() {
-        jt = new JTextArea(10, 30);
+        jt = new JTextArea(3, 30);
         search = new JButton("Search");
         search.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                searchId++;
                 Literal goal = ASSyntax.createLiteral("get", ASSyntax.createString(jt.getText()));
                 getTS().getC().addAchvGoal(goal, null);
-                search.setEnabled(false);
             }
         });
         
